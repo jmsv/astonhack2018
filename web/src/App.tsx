@@ -8,6 +8,8 @@ import MenuAppBar from './components/MenuAppBar'
 import Login from './components/Login'
 import Register from './components/Register'
 
+import BetaTrackList from './components/BetaTrackList'
+
 class App extends React.Component {
   public render() {
     return (
@@ -15,8 +17,11 @@ class App extends React.Component {
         <div className="App">
           <MenuAppBar />
 
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <div className="container">
+            <Route path="/" exact component={BetaTrackList} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+          </div>
         </div>
       </Router>
     );

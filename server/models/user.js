@@ -4,7 +4,8 @@ const User = mongoose.model(
   'User',
   new mongoose.Schema({
     spotifyId: 'string',
-    name: 'string'
+    name: 'string',
+    profile: 'object'
   })
 )
 

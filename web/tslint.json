@@ -10,5 +10,8 @@
       "coverage/lcov-report/*.js"
     ]
   },
-  "noImplicitAny": false
+  "noImplicitAny": false,
+  "rules": {
+    "jsx-boolean-value": false
+  }
 }

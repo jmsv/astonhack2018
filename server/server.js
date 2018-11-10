@@ -5,6 +5,6 @@ const cors = require('cors')
 
 app.use(cors())
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('ok'))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`spartify running on ${port}`))

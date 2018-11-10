@@ -8,6 +8,8 @@ AstonHack 2018
 - users add n songs to a playlist every week
 - users vote on how much they like each added song
 - most liked songs are added to a 'good songs' playlist
+- scoring per song is based on average score not total
+- can only vote if you added songs in previous week
 
 ### architecture
 

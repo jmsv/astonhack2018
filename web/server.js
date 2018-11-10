@@ -1,17 +1,24 @@
 require('dotenv').config()
 
 const express = require('express')
-const app = express()
-const port = 8080
+const passport = require('passport')
+const path = require('path')
 const cors = require('cors')
 
+const app = express()
+const port = 8080
 
-const spotify = require('./spotify')
+const spotify = require('./server/spotify')
 
 app.use(cors())
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
 
-app.get('/', (_, res) => res.send('ok'))
+app.get('/ok', function (req, res) {
+  res.send('ok')
+})
 
 app.get(
   '/auth/spotify/callback',

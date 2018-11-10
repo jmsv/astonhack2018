@@ -1,7 +1,7 @@
 const passport = require('passport')
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
-export const client = {
+const client = {
   id: process.env.CLIENT_ID,
   secret: process.env.CLIENT_SECRET
 }
@@ -20,3 +20,5 @@ passport.use(
     }
   )
 );
+
+module.exports = {client}

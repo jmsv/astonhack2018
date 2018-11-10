@@ -10,6 +10,7 @@ AstonHack 2018
 - most liked songs are added to a 'good songs' playlist
 - scoring per song is based on average score not total
 - can only vote if you added songs in previous week
+- replace this spreadsheet https://goo.gl/Fv6fzz
 
 ### architecture
 

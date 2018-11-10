@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import environment from '../environment'
 const baseUrl = environment().base
 
@@ -24,15 +26,23 @@ class BetaTrackList extends React.Component {
 
   public render() {
     const tracks = this.state.tracks || []
-    return (
-      <div>
-        {tracks.map((track, i) => {
-          return (
-            <BetaTrack key={i} track={track} />
-          )
-        })}
-      </div>
-    );
+    if (tracks && tracks.length) {
+      return (
+        <div>
+          {tracks.map((track, i) => {
+            return (
+              <BetaTrack key={i} track={track} />
+            )
+          })}
+        </div>
+      );  
+    } else {
+      return (
+        <div>
+          <LinearProgress />
+        </div>
+      )
+    }
   }
 }
 

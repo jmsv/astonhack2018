@@ -1,13 +1,14 @@
 import * as React from 'react';
 import './App.css';
 
+import MenuAppBar from './components/MenuAppBar'
+
+
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">new react thingy</h1>
-        </header>
+        <MenuAppBar />
       </div>
     );
   }

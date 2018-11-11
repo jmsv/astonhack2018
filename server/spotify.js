@@ -14,7 +14,7 @@ passport.use(
     {
       clientID: client.id,
       clientSecret: client.secret,
-      callbackURL: 'https://b97c1fe4.ngrok.io/auth/spotify/callback'
+      callbackURL: 'https://spartify.xyz/api/auth/spotify/callback'
     },
     function(accessToken, refreshToken, expires_in, profile, cb) {
       const newUser = new User({

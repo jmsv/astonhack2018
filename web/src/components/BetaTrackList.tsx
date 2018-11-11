@@ -11,7 +11,7 @@ const baseUrl = environment().base
 import BetaTrack from './BetaTrack'
 
 import axios from 'axios'
-import { Typography } from '@material-ui/core';
+import { Typography, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core';
 
 const styles = theme => ({
   button: {
@@ -23,7 +23,7 @@ const styles = theme => ({
   controlContainer: {
     display: 'flex',
     margin: 'auto',
-    width:'fit-content'
+    width: 'fit-content'
   },
   display1: {
     paddingTop: '10px',
@@ -36,7 +36,8 @@ const styles = theme => ({
 
 class BetaTrackList extends React.Component {
   state = {
-    tracks: []
+    tracks: [],
+    open: false
   }
 
   getTracks = () => {
@@ -49,6 +50,14 @@ class BetaTrackList extends React.Component {
     this.getTracks()
   }
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  }
+
+  handleClose = () => {
+    this.setState({ open: false });
+  }
+
   public render() {
     const classes = this.props['classes'];
 
@@ -59,10 +68,40 @@ class BetaTrackList extends React.Component {
         <div className={classes.controlContainer}>
           <Typography variant="display1" className={classes.display1}>Beta Playlist</Typography>
 
-          <Button variant="contained" color="primary" className={classes.button}>
+          <Button onClick={this.handleClickOpen} variant="contained" color="primary" className={classes.button}>
             Add <Icon className={classes.rightIcon}>add</Icon>
           </Button>
         </div>
+
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Add to Beta Playlist</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Copy a Spotify track link and paste it here to suggest a song
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="trackUrl"
+              label="Track UrL"
+              type="text"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleClose} color="primary">
+              Add Track
+            </Button>
+          </DialogActions>
+        </Dialog>
+
 
         {(tracks && tracks.length) ? tracks.map((track, i) => {
           return (

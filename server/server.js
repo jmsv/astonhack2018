@@ -19,24 +19,28 @@ let headers = {
   Authorization: ''
 }
 
-request({
-  method: 'POST',
-  url: 'https://accounts.spotify.com/api/token',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    Authorization: `Basic ${Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`).toString('base64')}`
-  },
-  form: {
-    grant_type: 'client_credentials'
-  }
-}, function (err, response, body) {
-  if (err) throw new Error(err);
+function refreshAuth() {
+  request({
+    method: 'POST',
+    url: 'https://accounts.spotify.com/api/token',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`).toString('base64')}`
+    },
+    form: {
+      grant_type: 'client_credentials'
+    }
+  }, function (err, response, body) {
+    if (err) throw new Error(err);
+  
+    body = JSON.parse(body)
+    headers['Authorization'] = `${body.token_type} ${body.access_token}`
+    console.log('headers :', headers)
+  });  
+}
 
-  body = JSON.parse(body)
-  headers['Authorization'] = `${body.token_type} ${body.access_token}`
-  console.log('headers :', headers)
-});
-
+refreshAuth()
+setInterval(refreshAuth, 3600*100)
 
 console.log('headers :', headers)
 

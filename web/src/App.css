@@ -7,15 +7,28 @@
   margin: 20px 0;
   padding: 20px;
   min-height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexy {
+  display: flex;
+}
+
+.wrap-text {
+  word-wrap: break-word;
 }
 
 .albumArt {
   max-width: 80px;
   max-height: 80px;
-  float: left;
   margin-right: 20px;
 }
 
 .ib {
   display: inline-block;
+}
+
+.votes {
+  margin-left: auto;
 }

@@ -54,7 +54,7 @@ class MenuAppBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              spartify
+              spartify: Spotify for Spartans
             </Typography>
             {auth && (
               <div>

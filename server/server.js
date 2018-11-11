@@ -66,17 +66,24 @@ app.get('/playlist-beta', (req, res) => {
         console.log('error:', err);
         return res.status(response.statusCode).send(err)
       }
+
       body = JSON.parse(body)
-      const tracksMapped = body.tracks.items.map(item => {
-        const t = item.track
-        return {
-          name: t.name || 'fuck',
-          album: t.album.name,
-          artists: t.artists.map(a => a.name).join(', '),
-          art: t.album.images[0].url
-        }
-      })
-      return res.send(tracksMapped)
+
+      if (body.tracks) {
+        const tracksMapped = body.tracks.items.map(item => {
+          const t = item.track
+          return {
+            name: t.name,
+            album: t.album.name,
+            artists: t.artists.map(a => a.name).join(', '),
+            art: t.album.images[0].url
+          }
+        })
+
+        return res.send(tracksMapped)  
+      } else {
+        return res.status(500).send({})
+      }
     });
 })
 

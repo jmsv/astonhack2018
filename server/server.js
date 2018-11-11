@@ -28,7 +28,7 @@ request({
     grant_type: 'client_credentials'
   }
 }, function (err, response, body) {
-  if (err) return console.error(err);
+  if (err) throw new Error(err);
 
   body = JSON.parse(body)
   headers['Authorization'] = `${body.token_type} ${body.access_token}`
@@ -58,7 +58,6 @@ app.get(
 );
 
 app.get('/playlist-beta', (req, res) => {
-  console.log('headers :', headers)
   request.get('https://api.spotify.com/v1/playlists/' + '3WfFehxrlSXVHX3NPi979n?si=wbQNps-9RFCUZ9lAsWV2GQ' + '/tracks', {
       headers: headers
     },
@@ -73,7 +72,8 @@ app.get('/playlist-beta', (req, res) => {
         return {
           name: t.name || 'fuck',
           album: t.album.name,
-          artists: t.artists.map(a => a.name).join(', ')
+          artists: t.artists.map(a => a.name).join(', '),
+          art: t.album.images[0].url
         }
       })
       return res.send(tracksMapped)

@@ -12,9 +12,12 @@ class BetaTrack extends React.Component<PassedProps, any> {
     const track = this.props.track
     return (
       <Paper className="beta-track">
-        <Typography variant="h3" component="h3" >{track.name}</Typography>
-        <Typography component="p" >{track.album}</Typography>
-        <Typography variant="h6" component="h6" >{track.artists}</Typography>
+        <img src={track.art} className="albumArt" />
+        <div>
+          <Typography variant="h5" >{track.name}</Typography>
+          <Typography variant="subtitle2" >from {track.album}</Typography>
+          <Typography variant="subtitle1" >by {track.artists}</Typography>
+        </div>
       </Paper>
     );
   }

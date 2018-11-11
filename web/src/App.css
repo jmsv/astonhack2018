@@ -4,6 +4,18 @@
 }
 
 .beta-track {
-  margin-bottom: 20px;
-  padding: 10px;
+  margin: 20px 0;
+  padding: 20px;
+  min-height: 120px;
+}
+
+.albumArt {
+  max-width: 80px;
+  max-height: 80px;
+  float: left;
+  margin-right: 20px;
+}
+
+.ib {
+  display: inline-block;
 }

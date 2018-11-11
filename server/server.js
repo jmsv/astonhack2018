@@ -39,9 +39,9 @@ request({
 console.log('headers :', headers)
 
 
-app.get('/', (_, res) => res.send('ok'))
+app.get('/api/', (_, res) => res.send('ok'))
 
-app.get('/auth/spotify', passport.authenticate('spotify'), function (req, res) {
+app.get('/api/auth/spotify', passport.authenticate('spotify'), function (req, res) {
   // The request will be redirected to spotify for authentication, so this
   // function will not be called.
 });
@@ -57,7 +57,7 @@ app.get(
   }
 );
 
-app.get('/playlist-beta', (req, res) => {
+app.get('/api/playlist-beta', (req, res) => {
   request.get('https://api.spotify.com/v1/playlists/' + '3WfFehxrlSXVHX3NPi979n?si=wbQNps-9RFCUZ9lAsWV2GQ' + '/tracks', {
       headers: headers
     },

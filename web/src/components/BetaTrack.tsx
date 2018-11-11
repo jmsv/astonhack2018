@@ -20,18 +20,23 @@ class BetaTrack extends React.Component<PassedProps, any> {
           </div>
         </div>
         <div className="votes">
-          <IconButton className="vote-button" aria-label="Delete">
-            <Icon className="vote-icon">sentiment_very_dissatisfied</Icon>
-          </IconButton>
-          <IconButton className="vote-button" aria-label="Delete">
-            <Icon className="vote-icon">sentiment_dissatisfied</Icon>
-          </IconButton>
-          <IconButton className="vote-button" aria-label="Delete">
-            <Icon className="vote-icon">sentiment_satisfied</Icon>
-          </IconButton>
-          <IconButton className="vote-button" aria-label="Delete">
-            <Icon className="vote-icon">sentiment_very_satisfied</Icon>
-          </IconButton>
+          {[{
+            'label': 'Hate',
+            'icon': 'sentiment_very_dissatisfied'
+          }, {
+            'label': 'Dislike',
+            'icon': 'sentiment_dissatisfied'
+          }, {
+            'label': 'Like',
+            'icon': 'sentiment_satisfied'
+          }, {
+            'label': 'Love',
+            'icon': 'sentiment_very_satisfied'
+          }].map(a => (
+            <IconButton className="vote-button" aria-label={a.label}>
+              <Icon className="vote-icon">{a.icon}</Icon>
+            </IconButton>          
+          ))}
         </div>
       </Paper>
     );

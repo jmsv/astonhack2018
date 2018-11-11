@@ -11,6 +11,8 @@ const port = 8080
 const db = require('./db')
 const spotify = require('./spotify')
 
+let playlistId = '7wxZNPtMDQJ3lJ1NLuFPWk?si=L6jVNWqGQgm3Z1N5o0Bkdw'
+
 app.use(cors())
 
 let headers = {
@@ -58,7 +60,7 @@ app.get(
 );
 
 app.get('/api/playlist-beta', (req, res) => {
-  request.get('https://api.spotify.com/v1/playlists/' + '3WfFehxrlSXVHX3NPi979n?si=wbQNps-9RFCUZ9lAsWV2GQ' + '/tracks', {
+  request.get('https://api.spotify.com/v1/playlists/' + playlistId + '/tracks', {
       headers: headers
     },
     function (err, response, body) {
@@ -82,6 +84,7 @@ app.get('/api/playlist-beta', (req, res) => {
 
         return res.send(tracksMapped)  
       } else {
+        console.log('error:', body)
         return res.status(500).send({})
       }
     });
